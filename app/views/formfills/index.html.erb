@@ -1,0 +1,42 @@
+<h1>Form</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th><br>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Gender</th>
+      <th>Interest</th>
+      <th>State</th>
+      <th>Country</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @formfills.each do |formfill| %>
+      <tr>
+        <td><%= formfill.firstname %></td>
+        <td><%= formfill.lastname %></td>
+        <td><%= formfill.email %></td>
+        <td><%= formfill.address %></td>
+        <td><%= formfill.city %></td>
+        <td><%= formfill.gender %></td>
+        <td><%= formfill.interest%></td>
+        <td><%= formfill.state %></td>
+        <td><%= formfill.country %></td>
+
+
+        <td><%= link_to 'Edit', edit_formfill_path(formfill) %></td>
+        <td><%= link_to 'Delete', formfill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "New", new_formfill_path %>

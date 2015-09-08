@@ -1,0 +1,75 @@
+<%= form_for(@formfill) do |f| %>
+  <% if @formfill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@formfill.errors.count, "Error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @formfill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+
+   <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+   <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_area :address %>
+  </div><br>
+
+<div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_area :city %>
+  </div>
+
+<div class= "field"> 
+  <%=f.label :gender %><br>
+<%= f.radio_button(:gender, "male") %>
+<%= label(:gender_male, "male") %><br>
+<%= f.radio_button(:gender, "female") %>
+<%= label(:gender_female, "female") %>
+</div><br>
+
+
+
+
+<div class="field">
+  <%=f.label :interest %><br>
+
+<% ["Coding", "Testing","Others"].each do |x| %>
+<input type="checkbox" name="formfill[interest][]" value="<%= x %>">
+<%=f.label x %>
+<br>
+<% end %>
+</div><br>
+
+
+<%=f.label :state %><br>
+<%= f.select(:state,[["select",""],["MP","MP"],["MAH","MAH"],["KAR","KAR"]])%><br>
+
+<%=f.label :country %><br>
+<%= f.select(:country,[["select",""],["India","India"],["Japan","Japan"],["US","US"]])%>
+
+
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div><br>
+<% end %>
